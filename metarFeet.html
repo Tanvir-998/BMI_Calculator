@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="fontawesome-free-5.15.1-web/css/all.min.css">
+    <style>
+        body {
+        font-family: arial;
+        margin: 0%;
+        padding: 0%;
+      }
+      .item1 {
+        grid-area: header;
+        background-color: black;
+        padding: 70px;
+        color:yellow;
+        border-bottom: 3px solid red;
+        font-weight: 600;
+        text-align: center;
+        font-size: 32px;
+      }
+      .item2 {
+        grid-area: menu;
+        background-color: #f1f1f1;
+        width: 411px;
+        height: 282px;
+        position: relative;
+      }
+      .item3 {
+        grid-area: main;
+        background-color: #ffffff;
+        width: 955px;
+        position: relative;
+      }
+      .item4 {
+        grid-area: footer;
+        background-color: #dddddd;
+        padding: 40px;
+        text-align: center;
+        font-weight: 700;
+        font-size: 1.5em;
+      }
+
+      .grid-container {
+        display: grid;
+        grid-template-areas:
+          "header header header header header header"
+          "menu main main main main main"
+          "footer footer footer footer footer footer";
+      }
+      .item2 .side-menu ul li {
+        list-style-type: none;
+      }
+      .item2 .side-menu ul li a {
+        text-decoration: none;
+        color: rgb(92, 92, 92);
+        font-size: 17px;
+        display: block;
+        line-height: 35px;
+        padding: 0px 10px;
+        width: 310px;
+      }
+      .item2 .side-menu ul li a:hover {
+        background-color: #555555;
+        color: rgb(255, 255, 255);
+      }
+      .item2 .side-menu .active {
+        background-color: #4caf50 !important;
+        color: #fff !important;
+      }
+      .item2 .side-menu {
+        position: absolute;
+      }
+      .item3 h2 {
+        text-align: center;
+        font-size: 1.5em;
+        margin-top: 35px;
+        margin-bottom: 20px;
+        font-weight: bold;
+        color: blue;
+      }
+      hr {
+        width: 900px;
+        height: 0.1px;
+        background-color: red;
+        border: none;
+      }
+      .left-side {
+        background-color: #f1f1f1;
+        width: 350px;
+        height: 132px;
+        border-radius: 5px;
+        position: absolute;
+        left: 25px;
+        padding: 20px 20px;
+        margin-top: 6px;
+      }
+      button {
+        background-color: #4caf50;
+        padding: 10px 20px;
+        color: #fff;
+        border: none;
+        margin-top: 10px;
+        margin-left: 58px;
+        font-size: 20px;
+        border-radius: 2px;
+        transition: .4s;
+        margin-bottom: 10px;
+      }
+      button a{
+        text-decoration: none;
+        color: #ffffff;
+      }
+      button:hover{
+        background-color:blue ;
+        cursor: pointer;
+      }
+      #first-input{
+        line-height: 40px;
+        text-align: center;
+      }
+      #option-1{
+        margin-left: 10px;
+      }
+      #option-2{
+        margin-left: 10px;
+      }
+      #right-area {
+        background-color: #f1f1f1;
+        width: 392px;
+        height: 171px;
+        float: right;
+        margin-right: 27px;
+        text-align: center;
+        margin-top: 6px;
+      }
+      #right-area label {
+        color: blue;
+        font-weight: 600;
+      }
+      #right-area input {
+        margin-top: 50px;
+        padding: 15px 15px;
+      }
+    </style>
+</head>
+<body>
+    <div class="grid-container">
+        <div class="item1">Calculators</div>
+        <div class="item2">
+          <div class="side-menu">
+            <ul>
+              <li>
+                <a href="homework_calculator.html" class="active">BMI Calculator</a>
+              </li>
+              <li>
+                <a href="#">Age Calculator</a>
+              </li>
+              <li>
+                <a href="farenhite_celcius.html">Fahrenheit to Celsius</a>
+              </li>
+              <li>
+                <a href="#">Meters to Feet</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="item3">
+          <h2>Meters to Feet</h2>
+          <hr />
+          <div class="left-side">
+            <table>
+              <tr id="first-input">
+                <td><label for="">Meters:</label></td>
+                <td><input type="number" id="txt-meters" /></td>
+              </tr>
+            </table>
+           <button  value="calculate" onclick="calculator();"><i class="fa fa-calculator"></i> Meters to Feet</button>
+          </div>
+          <div id="right-area">
+            <label for="">Feet:</label>
+            <input type="text" id="meter to feet" />
+          </div>
+        </div>
+        <div class="item4">&copy; 2021</div>
+      </div>
+      <script>
+        function calculator(){
+          var meter=document.getElementById("txt-meters").value;
+          var meterFloat=parseFloat(meter);
+          var meterFeet=meter*3.28;
+          document.getElementById("meter to feet").value=meterFeet.toFixed(3);
+        }
+      </script>
+</body>
+</html>

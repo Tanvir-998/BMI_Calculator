@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BMI Calculator</title>
+    <link rel="stylesheet" href="fontawesome-free-5.15.1-web/css/all.min.css" />
+    <script src="calculator.js"></script>
+    <style>
+      body {
+        font-family: arial;
+        margin: 0%;
+        padding: 0%;
+      }
+      .item1 {
+        grid-area: header;
+        background-color: black;
+        padding: 70px;
+        color: #ffffff;
+        border-bottom: 3px solid red;
+        font-weight: 600;
+        text-align: center;
+        font-size: 32px;
+      }
+      .item2 {
+        grid-area: menu;
+        background-color: #f1f1f1;
+        width: 411px;
+        height: 282px;
+        position: relative;
+      }
+      .item3 {
+        grid-area: main;
+        background-color: #ffffff;
+        width: 955px;
+        position: relative;
+      }
+      .item4 {
+        grid-area: footer;
+        background-color: #dddddd;
+        padding: 40px;
+        text-align: center;
+        font-weight: 700;
+        font-size: 1.5em;
+      }
+
+      .grid-container {
+        display: grid;
+        grid-template-areas:
+          "header header header header header header"
+          "menu main main main main main"
+          "footer footer footer footer footer footer";
+      }
+      .item2 .side-menu ul li {
+        list-style-type: none;
+      }
+      .item2 .side-menu ul li a {
+        text-decoration: none;
+        color: rgb(92, 92, 92);
+        font-size: 17px;
+        display: block;
+        line-height: 35px;
+        padding: 0px 10px;
+        width: 310px;
+      }
+      .item2 .side-menu ul li a:hover {
+        background-color: #555555;
+        color: #fff;
+      }
+      .item2 .side-menu .active {
+        background-color: #4caf50 !important;
+        color: #fff !important;
+      }
+      .item2 .side-menu {
+        position: absolute;
+      }
+      .item3 h2 {
+        text-align: center;
+        font-size: 1.5em;
+        margin-top: 35px;
+        margin-bottom: 20px;
+        font-weight: bold;
+        color: blueviolet;
+      }
+      hr {
+        width: 900px;
+        height: 0.1px;
+        background-color: red;
+        border: none;
+      }
+      .left-side {
+        background-color: #f1f1f1;
+        width: 350px;
+        border-radius: 5px;
+        position: absolute;
+        left: 25px;
+        padding: 20px 20px;
+        margin-top: 6px;
+      }
+      button {
+        background-color: #4caf50;
+        padding: 10px 20px;
+        color: #fff;
+        border: none;
+        margin-top: 10px;
+        margin-left: 58px;
+        font-size: 20px;
+        border-radius: 2px;
+        transition: 0.4s;
+        margin-bottom: 10px;
+      }
+      button a {
+        text-decoration: none;
+        color: #ffffff;
+      }
+      button:hover {
+        background-color: blueviolet;
+        cursor: pointer;
+      }
+      #first-input {
+        line-height: 40px;
+      }
+      #height-unite {
+        margin-left: 10px;
+      }
+      #weight-unite {
+        margin-left: 10px;
+      }
+      #right-area {
+        background-color: #f1f1f1;
+        width: 392px;
+        height: 171px;
+        float: right;
+        margin-right: 27px;
+        text-align: center;
+        margin-top: 6px;
+      }
+      #right-area label {
+        color: blueviolet;
+        font-weight: 600;
+      }
+      #right-area input {
+        margin-top: 50px;
+        padding: 15px 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="grid-container">
+      <div class="item1">Calculators</div>
+      <div class="item2">
+        <div class="side-menu">
+          <ul>
+            <li>
+              <a href="homework_calculator.html" class="active">BMI Calculator</a>
+            </li>
+            <li>
+              <a href="#">Age Calculator</a>
+            </li>
+            <li>
+              <a href="farenhite_celcius.html">Fahrenheit to Celsius</a>
+            </li>
+            <li>
+              <a href="metarFeet.html">Meters to Feet</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="item3">
+        <h2>BMI Calculator</h2>
+        <hr />
+        <div class="left-side">
+          <table>
+            <tr id="first-input">
+              <td><label for="">Height: </label></td>
+              <td><input type="number" id="txt-height" /></td>
+              <td>
+                <select name="" id="height-unite">
+                  <option value="Meter" selected>Meter</option>
+                  <option value="Centimeter">Centimeter</option>
+                  <option value="Feet">Feet</option>
+                  <option value="Inch">Inch</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td><label for="">Weight: </label></td>
+              <td><input type="number" id="txt-weight" /></td>
+              <td>
+                <select name="" id="weight-unite">
+                  <option value="KG" selected>KG</option>
+                  <option value="Pound">Pound</option>
+                </select>
+              </td>
+            </tr>
+          </table>
+          <button onclick="calculator();">
+            <i class="fa fa-calculator"></i> BMI Calculator
+          </button>
+        </div>
+        <div id="right-area">
+          <label for="">BMI:</label>
+          <input type="text" id="bmi" />
+        </div>
+      </div>
+
+      <div class="item4">&copy; 2021</div>
+    </div>
+    <script>
+     
+        function calculator() {
+
+        var height = document.getElementById("txt-height").value;
+        var weight = document.getElementById("txt-weight").value;
+        var heightFloat = parseFloat(height);
+        var weightFloat = parseFloat(weight);
+        var heightunite=document.getElementById("height-unite").value;
+        var weightunite=document.getElementById("weight-unite").value;
+       
+         if(heightunite=="Centimeter"){
+          heightFloat=heightFloat/100;
+        }
+        else if(heightunite=="Feet"){
+          heightFloat=heightFloat/3.28;
+        }
+        else if(heightunite=="Inch"){
+          heightFloat=heightFloat*0.0254;
+        }
+        if(weightunite=="Pound"){
+          weightFloat=weightFloat/2.2046;
+        }
+        var bmi = weightFloat / (heightFloat * heightFloat);
+        document.getElementById("bmi").value = bmi.toFixed(3);
+
+
+      }
+      
+      
+    </script>
+  </body>
+</html>
